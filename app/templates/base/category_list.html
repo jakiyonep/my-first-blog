@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Categories</h1>
+    <ul>
+      {% for category in object_list %}
+      <li><a href="{% url 'app:category_post' category.slug %}">{{ category.name }} ({{ category.num_posts }})</a></li>
+      {% empty %}
+      <li>No Category</li>
+      {% endfor %}
+    </ul>
+
+  </body>
+</html>

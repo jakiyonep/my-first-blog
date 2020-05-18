@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<head>
+  <link rel="stylesheet" href="{% static 'app/css/category-tag.css' %}">
+</head>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1 class="head">{{ category.name }}</h1>
+      <ul class="list">
+        {% for post in object_list %}
+        {% if user.is_authenticated or post.is_public %}
+          <div class="card mb-3">
+            {% if post.image %}
+              <a href="{% url 'app:post_detail' post.id %}">
+                <img class="card-img-top" src="{{ post.image.url }}" alt="{{ post.title }}">
+              </a>
+            {% endif %}
+          <div class="card-body">
+            {% if not post.is_public %}
+            <h5><span class="badge badge-secondary">Draft</span></h5>
+            {% endif %}
+            <a href="{% url 'app:post_detail' post.id %}">
+              <h5 class="card-title">{{ post.title }}</h5>
+            </a>
+            <p class="card-text date">{{ post.published_at|date }}</p>
+            <p class="card-text category">{{ post.category.name }}</p>
+            <p class="card-text tag">{% for tag in post.tag.all %}{{ tag.name }}, {% endfor %}</p>
+          </div>
+          </div>
+        {% else %}
+        <li>No posts found</li>
+        {% endif %}
+        {% empty %}
+        <li>No post yet</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <aside class="col-md-4">
+      {% include "app/snippets/sidebar.html" %}
+    </aside>
+  </div>
+</div>
+{% endblock %}

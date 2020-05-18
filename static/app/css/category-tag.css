@@ -1,0 +1,38 @@
+*{
+  font-family: "Arial";
+  color:rgb(113, 113, 113);
+}
+h1, h2, h3, h4{
+  font-weight: bold;
+}
+.list{
+  padding-left: 0;
+}
+li{
+  list-style: none;
+}
+.head{
+  margin-bottom: 50px;
+}
+
+.container{
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+.title{
+  color: inherit;
+}
+
+.thumbnail{
+  max-width: 100%;
+}
+
+
+.md{
+  margin-top:100px;
+  margin-bottom: 100px;
+}
+.toc{
+  background-color: rgb(238, 250, 255);
+  margin-bottom: 100px;
+}
